@@ -80,7 +80,9 @@ et fianlment : 🧪 Test de l'API avec Postman
 
 L'application Angular permet d'afficher les dashboards et d'interagir avec l'API Flask (prédiction, données).
 
-### ▶️ Lancer l'application
+lien de l'application : http://localhost:4200/dashboard/overview
+
+▶️ Lancer l'application
 
 ```bash
 cd frontend/angular-app
