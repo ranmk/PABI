@@ -48,9 +48,11 @@ Rana Maknine ,Yosra challekh – Conception des dashboards Power BI
 
 Amine Amara – Développement frontend & UX
 
- ## 🖼️ Aperçu de l'application MonoFico :
-[Application MonoFico](C:/Users/MSI/Desktop/dashbord/1.jpeg)
-<img src="C:/Users/MSI/Desktop/dashbord/1.jpeg" alt="APP" width="600"/>
+## 🖼️ Aperçu de l'application MonoFico :
+
+![Application MonoFico](https://github.com/ranmk/PABI/blob/APP/APP/1.jpeg)
+
+
 ## 🚀 Déploiement de l'application Flask
 
 Voici les étapes pour exécuter et déployer localement l’API Flask qui alimente les dashboards et les modèles IA :
