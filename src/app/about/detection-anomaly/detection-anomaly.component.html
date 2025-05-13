@@ -1,0 +1,26 @@
+<div class="classification-container">
+  <h2>Supplier Anomaly Detection</h2>
+
+  <form [formGroup]="anomalyForm" (ngSubmit)="detect()" class="form-card">
+    <div class="form-grid">
+      <div class="form-field" *ngFor="let field of anomalyForm.controls | keyvalue">
+        <label>{{ field.key | titlecase }}:</label>
+        <input
+          type="number"
+          [formControlName]="field.key"
+          [placeholder]="field.key | titlecase"
+          [class.invalid]="field.value.invalid && field.value.touched"
+        />
+        <div *ngIf="field.value.invalid && field.value.touched" class="error-message">
+          {{ field.key | titlecase }} is required.
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="submit-button">Detect Anomaly</button>
+  </form>
+
+  <div *ngIf="anomalyResult !== null" class="result-card">
+    <p>Anomaly Status: <strong>{{ anomalyResult }}</strong></p>
+  </div>
+</div>

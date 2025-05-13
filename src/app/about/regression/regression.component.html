@@ -1,0 +1,26 @@
+<div class="classification-container">
+  <h2>Amount Due Prediction</h2>
+
+  <form [formGroup]="regressionForm" (ngSubmit)="predict()" class="form-card">
+    <div class="form-grid">
+      <div class="form-field" *ngFor="let field of regressionForm.controls | keyvalue">
+        <label>{{ field.key | titlecase }}:</label>
+        <input
+          type="number"
+          [formControlName]="field.key"
+          [placeholder]="field.key | titlecase"
+          [class.invalid]="field.value.invalid && field.value.touched"
+        />
+        <div *ngIf="field.value.invalid && field.value.touched" class="error-message">
+          {{ field.key | titlecase }} is required.
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="submit-button">Predict Amount Due</button>
+  </form>
+
+  <div *ngIf="predictedAmountDue !== null" class="result-card">
+    <p>Predicted Amount Due: <strong>{{ predictedAmountDue }} Currency Units</strong></p>
+  </div>
+</div>

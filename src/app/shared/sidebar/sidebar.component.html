@@ -1,0 +1,43 @@
+<nav class="sidebar-nav">
+  <ul id="sidebarnav">
+    <!-- First level menu -->
+    <li class="sidebar-item"
+        *ngFor="let sidebarnavItem of sidebarnavItems"
+        [class.active]="showMenu === sidebarnavItem.title"
+        [routerLinkActive]="sidebarnavItem.submenu.length !== 0 ? '' : 'active'">
+
+      <!-- Section Title -->
+      <div class="nav-small-cap" *ngIf="sidebarnavItem.extralink === true">
+        {{ sidebarnavItem.title }}
+      </div>
+
+      <!-- Main Menu Link -->
+      <a class="sidebar-link waves-effect waves-dark"
+         [routerLink]="sidebarnavItem.class === '' && sidebarnavItem.submenu.length === 0 ? [sidebarnavItem.path] : null"
+         [ngClass]="[sidebarnavItem.class]"
+         *ngIf="!sidebarnavItem.extralink"
+         (click)="addExpandClass(sidebarnavItem.title)"
+         [routerLinkActive]="sidebarnavItem.submenu.length !== 0 ? '' : 'active'">
+
+        <i [ngClass]="[sidebarnavItem.icon]"></i>
+        <span class="hide-menu">{{ sidebarnavItem.title }}</span>
+        <!-- Add Arrow for Submenu -->
+       </a>
+
+      <!-- Submenu -->
+      <ul *ngIf="sidebarnavItem.submenu.length !== 0 && showMenu === sidebarnavItem.title" class="submenu pl-4">
+        <li *ngFor="let child of sidebarnavItem.submenu" class="sidebar-item">
+          <a class="sidebar-link waves-effect waves-dark"
+             [routerLink]="[child.path]"
+             [routerLinkActive]="'active'">
+            <i [ngClass]="[child.icon]"></i>
+            <span class="hide-menu">{{ child.title }}</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- Upgrade Button -->
+
+  </ul>
+</nav>

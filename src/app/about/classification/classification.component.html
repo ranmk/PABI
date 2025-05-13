@@ -1,0 +1,28 @@
+<div class="classification-container">
+  <h2>Supplier Risk Prediction</h2>
+
+  <form [formGroup]="riskForm" (ngSubmit)="predict()" class="form-card">
+    <div class="form-grid">
+      <div class="form-field" *ngFor="let field of riskForm.controls | keyvalue">
+        <label>{{ field.key | titlecase }}:</label>
+        <input
+          [type]="field.key === 'DisputeStatus_Ouvert' ? 'number' : 'text'"
+          [formControlName]="field.key"
+          [placeholder]="field.key | titlecase"
+          [min]="field.key === 'DisputeStatus_Ouvert' ? 0 : null"
+          [max]="field.key === 'DisputeStatus_Ouvert' ? 1 : null"
+          [class.invalid]="field.value.invalid && field.value.touched"
+        />
+        <div *ngIf="field.value.invalid && field.value.touched" class="error-message">
+          {{ field.key | titlecase }} is required.
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="submit-button">Predict Risk</button>
+  </form>
+
+  <div *ngIf="predictedRisk" class="result-card">
+    <p>Predicted Risk: <strong>{{ predictedRisk }}</strong></p>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="classification-container">
+  <h2>Supplier Payment Delay Prediction</h2>
+
+  <form [formGroup]="paymentForm" (ngSubmit)="predict()" class="form-card">
+    <div class="form-grid">
+      <div class="form-field" *ngFor="let field of paymentForm.controls | keyvalue">
+        <label>{{ field.key | titlecase }}:</label>
+        <input
+          type="number"
+          [formControlName]="field.key"
+          [placeholder]="field.key | titlecase"
+          [class.invalid]="field.value.invalid && field.value.touched"
+        />
+        <div *ngIf="field.value.invalid && field.value.touched" class="error-message">
+          {{ field.key | titlecase }} is required.
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="submit-button">Predict Payment Delay</button>
+  </form>
+
+  <div *ngIf="predictedDelay !== null" class="result-card">
+    <p>Predicted Payment Delay: <strong>{{ predictedDelay }} Days</strong></p>
+  </div>
+</div>
