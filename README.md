@@ -68,15 +68,30 @@ venv\Scripts\activate
 pip install -r requirements.txt
 4. ⚙️ Lancer l'application localement:
 python app.py
+
+
+
+
 5. 📤 Déploiement
-Arborescence simplifiée du dossier Flask : flask_app/
+PIflask/
+├── .venv/
+├── app/
+│ ├── models/
+│ ├── static/
+│ └── templates/
+├── anomaly_api.py
 ├── app.py
-├── models/
-│   └── forecasting_model.pkl
-├── static/
-├── templates/
-├── requirements.txt
-└── README.md
+├── cluster_api.py
+├── margin_api.py
+├── payment_delay_api.py
+├── profit_api.py
+├── regression_api.py
+└── risk_api.py
+💡 *Remarques :*  
+- .venv/ : Dossier de l’environnement virtuel Python.  
+- app/ : Contient la logique principale de l’application Flask.  
+- Chaque fichier *_api.py : Des endpoints Flask pour différentes API (anomaly detection, clustering, etc.).
+
 et fianlment : 🧪 Test de l'API avec Postman
 ## 🌐 Frontend Angular
 
@@ -91,12 +106,55 @@ cd frontend/angular-app
 npm install
 ng serve
 Communication avec l'API Flask :
-angular-app/
-├── app/
-│   ├── components/
-│   ├── services/api.service.ts
-│   └── app.module.ts
+angular-16/
+├── .angular/
+├── .idea/
+├── node_modules/
+├── src/
+│ └── app/
+│ ├── about/
+│ │ ├── classification/
+│ │ ├── clustering/
+│ │ ├── detection-anomaly/
+│ │ ├── margin/
+│ │ ├── payment-delay/
+│ │ ├── pred-profit/
+│ │ ├── regression/
+│ │ ├── about.component.html
+│ │ ├── about.component.ts
+│ │ └── about.module.ts
+│ ├── component/
+│ ├── dashboard/
+│ │ ├── dashboard-components/
+│ │ ├── finance/
+│ │ ├── overview/
+│ │ ├── purchase/
+│ │ ├── dashboard.component.html
+│ │ ├── dashboard.component.ts
+│ │ └── dashboard.module.ts
+│ ├── layouts/
+│ └── shared/
+│ ├── app.component.html
+│ ├── app.component.scss
+│ ├── app.component.spec.ts
+│ ├── app.component.ts
+│ ├── app.module.ts
+│ └── app-routing.module.ts
+├── assets/
+│ ├── favicon.ico
+│ ├── index.html
+│ └── styles.scss
+├── .editorconfig
+├── .gitignore
+├── .npmrc
+├── angular.json
 ├── package.json
+├── package-lock.json
+├── README.md
+├── tsconfig.app.json
+├── tsconfig.json
+└── tsconfig.spec.json
+
 
 lien de l'application : http://localhost:4200/dashboard/overview
 
